@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="712.0" prefWidth="735.0" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NeuronalesView">
+
+   <Label alignment="CENTER" layoutY="30.0" style="-fx-font-size: 26px; -fx-font-weight: bold;" text="Viajes Neuronales" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0" />
+
+   <VBox alignment="CENTER" layoutX="90.0" layoutY="80.0" prefHeight="180.0" spacing="10.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+      <children>
+         <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Buscar recuerdos" />
+
+         <HBox alignment="CENTER" spacing="15.0">
+            <children>
+               <Label text="Categoría:" />
+               <ComboBox fx:id="cmbBuscarCategoria" prefWidth="200.0" />
+               <Button onAction="#buscarPorCategoria" prefWidth="170.0" text="Buscar por categoría" />
+            </children>
+         </HBox>
+
+         <HBox alignment="CENTER" spacing="15.0">
+            <children>
+               <Label text="Importancia:" />
+               <TextField fx:id="txtBuscarImportancia" prefWidth="200.0" />
+               <Button onAction="#buscarPorImportancia" prefWidth="170.0" text="Buscar por importancia" />
+            </children>
+         </HBox>
+
+         <Button onAction="#mostrarTodos" prefWidth="150.0" text="Mostrar todos" />
+      </children>
+   </VBox>
+
+   <ListView fx:id="listaRecuerdos" layoutX="30.0" layoutY="270.0" prefHeight="160.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
+
+   <TextArea fx:id="txtRecuerdo" editable="false" layoutX="30.0" layoutY="450.0" prefHeight="130.0" wrapText="true" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
+
+   <HBox alignment="CENTER" layoutY="610.0" spacing="25.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <children>
+         <Button onAction="#irAlPasado" prefHeight="40.0" prefWidth="130.0" text="⏪ Anterior" />
+         <Button onAction="#Retroceder" prefHeight="45.0" prefWidth="210.0" styleClass="exit-button" text="Regresar al menú" />
+         <Button onAction="#irAlFuturo" prefHeight="40.0" prefWidth="130.0" text="⏩ Siguiente" />
+      </children>
+   </HBox>
+
+</AnchorPane>
