@@ -39,7 +39,6 @@ public class MainMenu {
 
     @FXML
     void IrMenuView(ActionEvent event) {
-        System.out.printf("si llega");
         try {
             Parent root = FXMLLoader.load(getClass().getResource(Paths.MainView));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

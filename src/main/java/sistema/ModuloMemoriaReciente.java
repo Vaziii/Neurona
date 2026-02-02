@@ -22,9 +22,6 @@ public class ModuloMemoriaReciente implements Modulo {
             colaRecientes.encolar(recuerdoActual);
             // 2. Meter al hash
             tablaAccesos.insertar(recuerdoActual);
-            
-            // Mensaje en consola para verificar que funciona
-            System.out.println("[Persona 3] Procesado: " + recuerdoActual.getDescripcion());
         }
     }
     

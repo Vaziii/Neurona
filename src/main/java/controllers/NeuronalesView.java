@@ -98,6 +98,7 @@ public class NeuronalesView implements Modulo {
                 return;
             }
 
+
             limpiarCampos();
             mostrarTodos();
 
@@ -116,8 +117,7 @@ public class NeuronalesView implements Modulo {
     // ================= NAVEGACIÓN =================
     @FXML
     private void irAlPasado(ActionEvent event) {
-        gestor.irAlPasado();
-    }
+        gestor.irAlPasado();}
 
     @FXML
     private void irAlFuturo(ActionEvent event) {

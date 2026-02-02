@@ -24,6 +24,7 @@ public abstract class ClassBase extends NeuronalesView {
             e.printStackTrace();
         }
     }
+
     public static void RetrocederMenu(String fxml, String titulo, ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(ClassBase.class.getResource(fxml));

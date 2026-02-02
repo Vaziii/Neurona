@@ -20,7 +20,7 @@ public class GestorCentralRecuerdos {
         cargarDesdeArchivos();
     }
 
-    // ================= ALMACENAMIENTO =================
+    // Almacenamiento
     public boolean agregarRecuerdo(Recuerdo recuerdo) {
         if (contarPorCategoria(recuerdo.getCategoria()) >= 30) {
             return false;
@@ -42,7 +42,7 @@ public class GestorCentralRecuerdos {
         return actual != null ? actual.dato : null;
     }
 
-    // ================= RECORRIDO =================
+    //Recorrido
     public void irAlPasado() {
         if (actual != null && actual.anterior != null) {
             actual = actual.anterior;
@@ -57,7 +57,7 @@ public class GestorCentralRecuerdos {
         }
     }
 
-    // ================= LISTAS =================
+    // Lista
     public ListaDobleRecuerdos getTodosLosRecuerdos() {
         return recuerdos;
     }
@@ -88,7 +88,7 @@ public class GestorCentralRecuerdos {
         return contador;
     }
 
-    // ================= SINCRONIZACIÓN =================
+    // Sincronizacion
     public void registrarModulo(Modulo modulo) {
         modulos.agregar(modulo);
     }
@@ -102,7 +102,7 @@ public class GestorCentralRecuerdos {
         }
     }
 
-    // ================= ARCHIVOS =================
+    // Archivos
     private void guardarEnArchivo(Recuerdo recuerdo) {
         try {
             File carpeta = new File("recuerdos");
@@ -145,7 +145,7 @@ public class GestorCentralRecuerdos {
 
         actual = recuerdos.getCabeza();
     }
-    // ================= BÚSQUEDA =================
+    // Busqueda
     public ListaDobleRecuerdos buscarPorImportancia(int importancia) {
         ListaDobleRecuerdos resultado = new ListaDobleRecuerdos();
         Nodo<Recuerdo> aux = recuerdos.getCabeza();
