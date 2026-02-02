@@ -4,10 +4,15 @@ import estructuras.ListaDobleRecuerdos;
 import estructuras.Nodo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import model.Recuerdo;
 import sistema.GestorCentralRecuerdos;
 import sistema.Modulo;
+import sistema.ModuloMemoriaReciente;
 import utilities.ClassBase;
 import utilities.Paths;
 
@@ -32,13 +37,18 @@ public class NeuronalesView implements Modulo {
     private ListView<String> listaRecuerdos;
     @FXML
     private TextArea txtRecuerdo;
+    @FXML
+    private TextArea areaMemoriaReciente;
 
     private GestorCentralRecuerdos gestor;
+    private ModuloMemoriaReciente moduloReciente;
 
     // ================= INICIALIZACIÓN =================
     @FXML
     public void initialize() {
         gestor = new GestorCentralRecuerdos();
+        moduloReciente = new ModuloMemoriaReciente();
+        gestor.registrarModulo(moduloReciente);
         gestor.registrarModulo(this);
 
         cmbBuscarCategoria.getItems().addAll(
@@ -63,6 +73,12 @@ public class NeuronalesView implements Modulo {
             String descripcion = txtDescripcion.getText();
             int importancia = Integer.parseInt(txtImportancia.getText());
             String fecha = txtFecha.getText();
+
+            if (txtImportancia.getText().isEmpty()) {
+                 txtRecuerdo.setText("Ingrese la importancia.");
+                 return;
+            }
+            
 
             if (categoria == null || descripcion.isEmpty() || fecha.isEmpty()) {
                 txtRecuerdo.setText("Complete todos los campos.");
@@ -160,6 +176,9 @@ public class NeuronalesView implements Modulo {
             txtRecuerdo.setText(recuerdoActual.toString());
         } else {
             txtRecuerdo.setText("No hay recuerdos almacenados.");
+        }
+        if (areaMemoriaReciente != null) {
+            areaMemoriaReciente.setText(moduloReciente.obtenerEstado());
         }
     }
 }

@@ -40,7 +40,10 @@
 
    <ListView fx:id="listaRecuerdos" layoutX="30.0" layoutY="270.0" prefHeight="160.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
 
-   <TextArea fx:id="txtRecuerdo" editable="false" layoutX="30.0" layoutY="450.0" prefHeight="130.0" wrapText="true" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
+   <TextArea fx:id="txtRecuerdo" editable="false" layoutX="30.0" layoutY="450.0" prefHeight="130.0" prefWidth="320.0" wrapText="true" AnchorPane.leftAnchor="30.0" />
+
+   <Label text="Memoria Reciente (Cola)" layoutX="370.0" layoutY="430.0" style="-fx-font-weight: bold;"/>
+   <TextArea fx:id="areaMemoriaReciente" editable="false" layoutX="370.0" layoutY="450.0" prefHeight="130.0" prefWidth="320.0" wrapText="true" AnchorPane.rightAnchor="30.0" />
 
    <HBox alignment="CENTER" layoutY="610.0" spacing="25.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
       <children>
