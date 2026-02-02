@@ -8,11 +8,12 @@
 
    <Text layoutX="282.0" layoutY="80.0" style="-fx-font-size: 32px; -fx-font-weight: bold;" text="MEMORY CORE" AnchorPane.topAnchor="50.0" />
 
-   <Button fx:id="IdViajes" layoutX="260.0" layoutY="140.0" onAction="#IrMenuView" prefHeight="50.0" prefWidth="280.0" text="Viajes Neuronales" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="260.0" />
+   <Button fx:id="IdViajes" layoutX="83.0" layoutY="136.0" onAction="#IrMenuView" prefHeight="50.0" prefWidth="280.0" text="Viajes Neuronales" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="437.0" />
 
-   <Button fx:id="IdIngreso" layoutX="260.0" layoutY="210.0" onAction="#IngresoOpcion" prefHeight="50.0" prefWidth="280.0" text="Ingreso de Recuerdos" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="260.0" />
-   <Button layoutX="260.0" layoutY="280.0" mnemonicParsing="false" onAction="#EliminarR" prefHeight="50.0" prefWidth="280.0" text="Eliminar Recuerdo" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="260.0" />
+   <Button fx:id="IdIngreso" layoutX="463.0" layoutY="136.0" onAction="#IngresoOpcion" prefHeight="50.0" prefWidth="280.0" text="Ingreso de Recuerdos" AnchorPane.leftAnchor="463.0" AnchorPane.rightAnchor="57.0" />
+   <Button layoutX="83.0" layoutY="225.0" mnemonicParsing="false" onAction="#EliminarR" prefHeight="50.0" prefWidth="280.0" text="Eliminar Recuerdo" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="437.0" />
 
-   <Button layoutX="260.0" layoutY="350.0" onAction="#salir" prefHeight="50.0" prefWidth="280.0" styleClass="exit-button" text="Salir" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="260.0" />
+   <Button layoutX="260.0" layoutY="312.0" onAction="#salir" prefHeight="50.0" prefWidth="280.0" styleClass="exit-button" text="Salir" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="260.0" />
+   <Button layoutX="463.0" layoutY="232.0" mnemonicParsing="false" onAction="#VisualizarArb" prefHeight="50.0" prefWidth="280.0" text="Visualizador de Arbol" />
 
 </AnchorPane>

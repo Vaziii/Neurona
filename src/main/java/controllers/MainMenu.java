@@ -26,7 +26,8 @@ public class MainMenu {
 
     @FXML
     void IngresoOpcion(ActionEvent event) {
-        try {
+        ClassBase.MenuButton(Paths.IngresoView, "Ingreso de Recuerdo", event);
+        /**try {
             Parent root = FXMLLoader.load(getClass().getResource(Paths.IngresoView));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root, 900, 600));
@@ -34,12 +35,13 @@ public class MainMenu {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     @FXML
     void IrMenuView(ActionEvent event) {
-        try {
+        ClassBase.MenuButton(Paths.MainView, "Viajes Neuronales", event);
+        /**try {
             Parent root = FXMLLoader.load(getClass().getResource(Paths.MainView));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root, 1000, 650));
@@ -47,12 +49,17 @@ public class MainMenu {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     @FXML
     void salir(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    void VisualizarArb(ActionEvent event) {
+        ClassBase.MenuButton(Paths.VisualizadorView, "Visualizador de Arbol", event);
     }
 }
