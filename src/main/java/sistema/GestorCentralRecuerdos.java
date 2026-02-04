@@ -2,6 +2,7 @@ package sistema;
 
 import estructuras.ListaDobleRecuerdos;
 import estructuras.ListaSimple;
+import estructuras.MinHeap; // IMPORTADO
 import estructuras.Nodo;
 import model.Recuerdo;
 
@@ -20,22 +21,48 @@ public class GestorCentralRecuerdos {
         cargarDesdeArchivos();
     }
 
-    // Almacenamiento
-    public boolean agregarRecuerdo(Recuerdo recuerdo) {
+    // Almacenamiento con Olvido Inteligente Automático
+    public String agregarRecuerdo(Recuerdo recuerdo) {
+        String mensaje = "Recuerdo guardado correctamente.";
+
+        // Si la categoría ya tiene 30 o más, aplicamos el heap para borrar el de menor importancia
         if (contarPorCategoria(recuerdo.getCategoria()) >= 30) {
-            return false;
+
+            // 1. Creamos un MinHeap para la categoría llena
+            MinHeap heapPrioridad = new MinHeap(35);
+            Nodo<Recuerdo> aux = recuerdos.getCabeza();
+
+            // 2. Filtramos los recuerdos de esa categoría y los metemos al Heap
+            while (aux != null) {
+                if (aux.dato.getCategoria().equalsIgnoreCase(recuerdo.getCategoria())) {
+                    heapPrioridad.insertar(aux.dato);
+                }
+                aux = aux.siguiente;
+            }
+
+            // 3. Extraemos el de menor importancia
+            Recuerdo paraEliminar = heapPrioridad.extraerMinimo();
+
+            // 4. Lo borramos de la memoria y del archivo físico
+            if (paraEliminar != null) {
+                eliminarRecuerdo(paraEliminar);
+                // Actualizamos el mensaje para avisar al usuario
+                mensaje = "Olvido inteligente: Se eliminó [" + paraEliminar.getDescripcion() + "] por falta de espacio.";
+            }
         }
 
+        // Ahora que hay espacio (máximo 29), agregamos el nuevo
         recuerdos.agregarAlFinal(recuerdo);
         guardarEnArchivo(recuerdo);
-
 
         if (actual == null) {
             actual = recuerdos.getCabeza();
         }
 
         notificarModulos();
-        return true;
+
+        // Retornamos el reporte de lo sucedido
+        return mensaje;
     }
 
     public Recuerdo getRecuerdoActual() {
@@ -145,6 +172,7 @@ public class GestorCentralRecuerdos {
 
         actual = recuerdos.getCabeza();
     }
+
     // Busqueda
     public ListaDobleRecuerdos buscarPorImportancia(int importancia) {
         ListaDobleRecuerdos resultado = new ListaDobleRecuerdos();
@@ -196,7 +224,6 @@ public class GestorCentralRecuerdos {
             e.printStackTrace();
         }
 
-        // Si la categoría se quedó vacía, elimina el archivo físico .txt
         if (!tieneRecuerdos && archivo.exists()) {
             archivo.delete();
         }

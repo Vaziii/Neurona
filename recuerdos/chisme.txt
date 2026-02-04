@@ -1,3 +1,30 @@
-2 | 2 | 2
-2 | 3 | 1
-adios | 4 | 5
+El vecino compró un carro nuevo ayer | 3 | 2026-02-01
+Vieron a la jefa cenando con el ex | 8 | 2026-02-01
+Se filtró el examen de programación | 10 | 2026-02-02
+Carlos renunció sin avisar a nadie | 6 | 2026-02-02
+Abrirán una cafetería frente a la facultad | 4 | 2026-02-03
+El profesor de redes se va de viaje | 5 | 2026-02-03
+Se rompió el compromiso de Ana y Luis | 9 | 2026-02-03
+Encontraron un túnel secreto en el centro | 7 | 2026-02-03
+Juan ganó la lotería pero lo oculta | 9 | 2026-02-04
+El café de la esquina regala donas hoy | 4 | 2026-02-04
+María se pintó el pelo de color verde | 3 | 2026-02-05
+La biblioteca cerrará por remodelación | 5 | 2026-02-05
+Vieron un OVNI sobre el edificio norte | 10 | 2026-02-05
+Roberto no hizo la tarea de Java | 2 | 2026-02-06
+Se cayo el servidor principal de la U | 8 | 2026-02-06
+El guardiatiene una banda de rock | 4 | 2026-02-06
+La pizzería subió los precios otra vez | 3 | 2026-02-07
+Alguien dejó una carta de amor anónima | 6 | 2026-02-07
+El decano bailó en la fiesta de ayer | 7 | 2026-02-07
+Se perdió la mascota de la facultad | 9 | 2026-02-08
+Cambiaron la contraseña del Wi-Fi | 10 | 2026-02-08
+El ascensor se quedó trabado 3 horas | 5 | 2026-02-08
+Comprarán computadoras nuevas pronto | 6 | 2026-02-09
+Hay un fantasma en el baño del 2do piso | 8 | 2026-02-09
+sofia se va a vivir a otro pais | 6 | 2026-02-10
+encontrar dinero tirado en el pasillo | 5 | 2026-02-10
+el perro de ruth | 3 | 20
+auyuda | 2 | es
+juanita | 4 | 233
+123 | 1 | 23
