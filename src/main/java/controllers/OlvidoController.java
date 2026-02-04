@@ -18,7 +18,6 @@ public class OlvidoController {
 
     private GestorCentralRecuerdos gestor;
     private MinHeap colaPrioridad;
-
     @FXML
     public void initialize() {
         // Al crear el gestor, este ya llama internamente a cargarDesdeArchivos()

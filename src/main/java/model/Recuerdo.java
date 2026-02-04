@@ -1,5 +1,7 @@
 package model;
 
+import java.time.LocalDate;
+
 public class Recuerdo {
 
     private String descripcion;
@@ -13,6 +15,10 @@ public class Recuerdo {
         this.fecha = fecha;
         this.categoria = categoria;
 
+    }
+
+    public LocalDate getFechaComoDate() {
+        return LocalDate.parse(fecha);
     }
 
     public String getDescripcion() {
