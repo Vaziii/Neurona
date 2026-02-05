@@ -53,51 +53,6 @@ public class NeuronalesView implements Modulo {
         ClassBase.RetrocederMenu(Paths.MainMenu, "Menu Memory Core", event);
     }
 
-    // ================= AGREGAR (MODIFICADO) =================
-    @FXML
-    private void agregarRecuerdo(ActionEvent event) {
-        try {
-            String categoria = cmbBuscarCategoria.getValue();
-            String descripcion = txtDescripcion.getText();
-            String importanciaStr = txtImportancia.getText();
-            String fecha = txtFecha.getText();
-
-            // Validaciones
-            if (categoria == null || descripcion.isEmpty() || importanciaStr.isEmpty() || fecha.isEmpty()) {
-                txtRecuerdo.setText(" Complete todos los campos para agregar.");
-                return;
-            }
-
-            int importancia = Integer.parseInt(importanciaStr);
-
-            if (importancia < 1 || importancia > 10) {
-                txtRecuerdo.setText(" La importancia debe estar entre 1 y 10.");
-                return;
-            }
-
-            Recuerdo nuevo = new Recuerdo(descripcion, importancia, fecha, categoria);
-
-            // CAMBIO CLAVE: El gestor ahora devuelve un String con el resultado del Olvido Inteligente
-            String resultado = gestor.agregarRecuerdo(nuevo);
-
-            // Mostramos el mensaje (Ej: "Recuerdo guardado" o "Se eliminó [X] por falta de espacio")
-            txtRecuerdo.setText(resultado);
-
-            limpiarCampos();
-            mostrarTodos();
-
-        } catch (NumberFormatException e) {
-            txtRecuerdo.setText("Error: La importancia debe ser un número entero.");
-        }
-    }
-
-    private void limpiarCampos() {
-        txtDescripcion.clear();
-        txtImportancia.clear();
-        txtFecha.clear();
-        // No limpiamos el combo aquí por si el usuario quiere seguir agregando en la misma categoría
-    }
-
     // ================= NAVEGACIÓN =================
     @FXML
     private void irAlPasado(ActionEvent event) {

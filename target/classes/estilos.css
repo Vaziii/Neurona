@@ -2,10 +2,12 @@
 /* 🎨 MEMORY CORE - ESTILO GENERAL CLARO Y MODERNO */
 /* ================================================= */
 
-/* 🌤 FONDO PRINCIPAL */
+/* 🌤 FONDO PRINCIPAL Y CENTRADO GLOBAL */
 .root {
     -fx-font-family: "Segoe UI", "Arial";
     -fx-background-color: linear-gradient(to bottom right, #f1f5f9, #e0f2fe);
+    /* PROPIEDAD CLAVE: Alinea el contenido al centro si el contenedor padre lo permite */
+    -fx-alignment: center;
 }
 
 /* 🧠 TÍTULO PRINCIPAL */
@@ -14,12 +16,14 @@
     -fx-font-size: 36px;
     -fx-font-weight: 800;
     -fx-letter-spacing: 3px;
+    -fx-text-alignment: center; /* Asegura que el texto multilinea se centre */
 }
 
 /* 📝 SUBTÍTULOS */
 .subtitle {
     -fx-text-fill: #475569;
     -fx-font-size: 15px;
+    -fx-text-alignment: center;
 }
 
 /* 📦 PANEL / TARJETA */
@@ -28,7 +32,32 @@
     -fx-background-radius: 22;
     -fx-padding: 45;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 20, 0.3, 0, 6);
+    /* Alineación interna */
+    -fx-alignment: center;
 }
+
+/* ================================================= */
+/* 🎯 ALINEACIÓN Y LAYOUT (NUEVO) */
+/* ================================================= */
+
+/* Clase útil para aplicar a VBox o HBox en el FXML (styleClass="contenedor-centrado") */
+.contenedor-centrado {
+    -fx-alignment: center;
+    -fx-spacing: 20;
+    -fx-padding: 30;
+}
+
+/* Hace que el ScrollPane sea transparente para que el árbol parezca flotar en el centro */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
 /* ================================================= */
 /* 🔽 COMBOBOX */
 /* ================================================= */
@@ -40,6 +69,7 @@
     -fx-background-radius: 10;
     -fx-padding: 4 8 4 8;
     -fx-font-size: 14px;
+    -fx-alignment: center-left; /* Texto alineado, pero caja centrada por el padre */
 }
 
 .combo-box .list-cell {
@@ -68,7 +98,6 @@
 .combo-box-popup .list-view {
     -fx-background-color: white;
     -fx-border-color: #cbd5f5;
-
 }
 
 .combo-box-popup .list-cell {
@@ -96,6 +125,7 @@
     -fx-background-radius: 14;
     -fx-padding: 12 30;
     -fx-cursor: hand;
+    -fx-alignment: center;
 }
 
 .button:hover {
@@ -115,6 +145,21 @@
 .exit-button:hover {
     -fx-background-color: #dc2626;
     -fx-text-fill: white;
+}
+
+/* BOTÓN SECUNDARIO (Regresar, etc.) */
+.boton-secundario {
+    -fx-background-color: transparent;
+    -fx-text-fill: #475569;
+    -fx-border-color: #cbd5f5;
+    -fx-border-radius: 14;
+    -fx-border-width: 1;
+}
+
+.boton-secundario:hover {
+    -fx-background-color: #f1f5f9;
+    -fx-text-fill: #0f172a;
+    -fx-border-color: #94a3b8;
 }
 
 /* ================================================= */
@@ -144,6 +189,12 @@
     -fx-font-size: 14px;
 }
 
+.titulo {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+}
+
 /* ================================================= */
 /* 📋 TABLAS */
 /* ================================================= */
@@ -163,10 +214,12 @@
 .table-view .label {
     -fx-text-fill: white;
     -fx-font-weight: bold;
+    -fx-alignment: center;
 }
 
 .table-row-cell {
     -fx-background-color: #f8fafc;
+    -fx-alignment: center;
 }
 
 .table-row-cell:selected {
@@ -174,12 +227,20 @@
 }
 
 /* ================================================= */
-/* 📌 SCROLL */
+/* 📌 SCROLL (MODERNIZADO) */
 /* ================================================= */
 
+.scroll-bar:vertical, .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
 .scroll-bar .thumb {
-    -fx-background-color: #2563eb;
+    -fx-background-color: #cbd5f5;
     -fx-background-radius: 10;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #2563eb;
 }
 
 /* ================================================= */

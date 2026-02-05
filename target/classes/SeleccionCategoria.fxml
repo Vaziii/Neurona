@@ -1,34 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox spacing="15" alignment="CENTER"
-      xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="controllers.SeleccionCategoriaController"
-      stylesheets="@estilos.css">
+<VBox alignment="CENTER" spacing="15" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SeleccionCategoriaController">
 
     <padding>
-        <Insets top="30" right="30" bottom="30" left="30"/>
+        <Insets bottom="30" left="30" right="30" top="30" />
     </padding>
 
-    <Label text="Selecciona una categoría"
-           styleClass="titulo"/>
+    <Label styleClass="titulo" text="Selecciona una categoría" />
 
-    <ComboBox fx:id="comboCategorias"
-              prefWidth="260"
-              styleClass="campo"/>
+    <ComboBox fx:id="comboCategorias" prefWidth="260" styleClass="campo" />
 
-    <HBox spacing="15" alignment="CENTER">
-        <Button text="Visualizar Árbol"
-                styleClass="boton-primario"
-                onAction="#visualizar"/>
+    <HBox alignment="CENTER" spacing="15">
+        <Button onAction="#visualizar" styleClass="boton-primario" text="Visualizar Árbol" />
 
-        <Button text="Regresar"
-                styleClass="boton-secundario"
-                onAction="#regresar"/>
+        <Button onAction="#regresar" text="Regresar" />
     </HBox>
 
 </VBox>

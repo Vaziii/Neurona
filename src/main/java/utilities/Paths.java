@@ -9,6 +9,4 @@ public class Paths {
     public static final String CSS = "/estilos.css";
     public static final String SeleccionCategoriaView = "/SeleccionCategoria.fxml";
     public static final String VisualizadorArbolView = "/VisualizadorArbol.fxml";
-
-
 }

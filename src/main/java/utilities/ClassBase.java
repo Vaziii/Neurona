@@ -12,28 +12,27 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public abstract class ClassBase extends NeuronalesView {
+
     public static void MenuButton(String Path, String Titulo, ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(ClassBase.class.getResource(Path));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle(Titulo);
+            stage.setMaximized(false);
+            stage.sizeToScene();
+            stage.centerOnScreen();
             stage.show();
         } catch (IOException e) {
-
             e.printStackTrace();
         }
     }
-
     public static void RetrocederMenu(String fxml, String titulo, ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(ClassBase.class.getResource(fxml));
             Parent root = loader.load();
-
             Stage stage;
-
             Object source = event.getSource();
-
             if (source instanceof Node node) {
                 stage = (Stage) node.getScene().getWindow();
             } else if (source instanceof MenuItem menuItem) {
@@ -41,15 +40,14 @@ public abstract class ClassBase extends NeuronalesView {
             } else {
                 throw new RuntimeException("No se pudo obtener el Stage.");
             }
-
             stage.setTitle(titulo);
             stage.setScene(new Scene(root));
+            stage.setMaximized(false);
+            stage.sizeToScene();
+            stage.centerOnScreen();
             stage.show();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    public abstract void start(Stage stage) throws Exception;
 }

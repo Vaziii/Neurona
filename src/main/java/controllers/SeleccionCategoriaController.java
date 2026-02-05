@@ -22,8 +22,8 @@ public class SeleccionCategoriaController {
 
     @FXML
     public void initialize() {
+        // Cargar categorías disponibles
         ListaSimple<String> categorias = GestorCentralRecuerdos.getInstancia().getCategorias();
-
         Nodo<String> aux = categorias.getCabeza();
         while (aux != null) {
             comboCategorias.getItems().add(aux.dato);
@@ -40,12 +40,21 @@ public class SeleccionCategoriaController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(Paths.VisualizadorArbolView));
             Parent root = loader.load();
 
+            // Pasamos la categoría al siguiente controlador
             VisualizadorArbol controller = loader.getController();
             controller.setCategoria(categoria);
 
+            // Obtenemos el escenario (ventana) actual
             Stage stage = (Stage) comboCategorias.getScene().getWindow();
-            stage.setScene(new Scene(root));
+
+            // Cambiamos la escena
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
             stage.setTitle("Árbol de Recuerdos - " + categoria);
+
+            // --- CAMBIO: VENTANA MAXIMIZADA ---
+            stage.setMaximized(true);
+            // ----------------------------------
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -53,9 +62,7 @@ public class SeleccionCategoriaController {
     }
 
     @FXML
-    private void regresar() {
-        Stage stage = (Stage) comboCategorias.getScene().getWindow();
-        stage.close();
+    private void regresar(ActionEvent event) {
+        ClassBase.RetrocederMenu(Paths.MainMenu, "Menu Memory Core", event);
     }
-
 }

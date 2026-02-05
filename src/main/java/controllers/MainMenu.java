@@ -17,61 +17,26 @@ public class MainMenu {
 
     @FXML private Button IdViajes;
     @FXML private Button IdIngreso;
-
     @FXML
     void EliminarR(ActionEvent event) {
         ClassBase.MenuButton(Paths.OlvidoView, "Olvidar Recuerdo", event);
 
     }
-
     @FXML
     void IngresoOpcion(ActionEvent event) {
         ClassBase.MenuButton(Paths.IngresoView, "Ingreso de Recuerdo", event);
-        /**try {
-            Parent root = FXMLLoader.load(getClass().getResource(Paths.IngresoView));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root, 900, 600));
-            stage.setTitle("Ingreso de Recuerdos");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
     }
-
+    @FXML
+    public void VisualizarArb(ActionEvent event) {
+        ClassBase.MenuButton(Paths.SeleccionCategoriaView,"Mostrar Arbol por Categorias", event);
+    }
     @FXML
     void IrMenuView(ActionEvent event) {
         ClassBase.MenuButton(Paths.MainView, "Viajes Neuronales", event);
-        /**try {
-            Parent root = FXMLLoader.load(getClass().getResource(Paths.MainView));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root, 1000, 650));
-            stage.setTitle("Viajes Neuronales");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
     }
-
     @FXML
     void salir(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
-
-    @FXML
-    public void VisualizarArb() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/SeleccionCategoria.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Mostrar Arbol por Categorias ");
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 }

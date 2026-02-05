@@ -1,39 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controllers.VisualizadorArbol"
-            stylesheets="@estilos.css">
+<BorderPane stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.VisualizadorArbol">
 
     <top>
-        <HBox spacing="10" alignment="CENTER_LEFT">
+        <HBox alignment="CENTER_LEFT" spacing="10" styleClass="panel">
             <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
+                <Insets bottom="15" left="20" right="20" top="15" />
             </padding>
 
-            <Button text="← Regresar"
-                    onAction="#volver"
-                    styleClass="boton-secundario"/>
+            <Button onAction="#volver" text="← Regresar" />
 
-            <Label fx:id="lblCategoria"
-                   text="Categoría"
-                   styleClass="titulo"/>
+            <Label fx:id="lblCategoria" styleClass="text-area" text="Visualizador de Memorias" />
+
+            <Region HBox.hgrow="ALWAYS" />
+
+            <Button onAction="#resetVista" styleClass="boton-pequeno" text="Centrar Vista" />
         </HBox>
     </top>
 
     <center>
-        <ScrollPane fx:id="scrollPane"
-                    pannable="true"
-                    fitToWidth="true"
-                    fitToHeight="true">
+        <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" pannable="true" styleClass="scroll-transparente">
 
-            <Pane fx:id="panelArbol"
-                  prefWidth="2000"
-                  prefHeight="2000"/>
+            <Pane fx:id="panelArbol" prefHeight="2000" prefWidth="3000" styleClass="panel-transparente" />
         </ScrollPane>
     </center>
 
