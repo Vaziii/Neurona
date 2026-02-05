@@ -1,0 +1,27 @@
+Salida con amigos | 4 | 2025-01-20
+Cine nocturno | 6 | 2025-02-02
+Cena improvisada | 5 | 2025-02-18
+Viaje corto | 7 | 2025-03-04
+Caminata larga | 3 | 2025-03-19
+Fiesta universitaria | 8 | 2025-04-01
+Playa el fin de semana | 6 | 2025-04-16
+Visita familiar | 4 | 2025-05-01
+Evento cultural | 5 | 2025-05-15
+Concierto | 9 | 2025-05-29
+Salida nocturna | 6 | 2025-06-12
+Excursión | 7 | 2025-06-27
+Reunión social | 5 | 2025-07-10
+Bar nuevo | 6 | 2025-07-25
+Paseo largo | 4 | 2025-08-09
+Fiesta sorpresa | 8 | 2025-08-23
+Viaje cancelado | 3 | 2025-09-07
+Salida rápida | 4 | 2025-09-21
+Evento deportivo | 6 | 2025-10-05
+Cita grupal | 5 | 2025-10-19
+Celebración | 7 | 2025-11-03
+Salida de madrugada | 8 | 2025-11-18
+Cena especial | 6 | 2025-12-01
+Navidad fuera | 7 | 2025-12-24
+Año nuevo | 8 | 2026-01-01
+Viaje corto | 6 | 2026-01-18
+Salida espontánea | 5 | 2026-02-05

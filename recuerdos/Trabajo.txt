@@ -1,0 +1,27 @@
+Nuevo jefe | 6 | 2025-01-14
+Reunión larga | 5 | 2025-01-30
+Más carga laboral | 7 | 2025-02-12
+Cambio de horario | 4 | 2025-02-28
+Proyecto urgente | 8 | 2025-03-10
+Entrega atrasada | 6 | 2025-03-25
+Falla del sistema | 9 | 2025-04-07
+Trabajo remoto | 5 | 2025-04-23
+Capacitación obligatoria | 4 | 2025-05-05
+Problema con cliente | 7 | 2025-05-20
+Horas extra | 6 | 2025-06-02
+Pago retrasado | 8 | 2025-06-17
+Cambio de equipo | 5 | 2025-07-01
+Renuncia inesperada | 7 | 2025-07-16
+Nuevo proyecto | 9 | 2025-07-30
+Vacaciones negadas | 6 | 2025-08-13
+Auditoría | 8 | 2025-08-28
+Conflicto laboral | 7 | 2025-09-10
+Evaluación de desempeño | 5 | 2025-09-24
+Aumento prometido | 6 | 2025-10-08
+Reunión urgente | 7 | 2025-10-22
+Cambio de políticas | 5 | 2025-11-06
+Feriado trabajado | 4 | 2025-11-20
+Cierre de año | 6 | 2025-12-10
+Vacaciones | 3 | 2025-12-26
+Regreso al trabajo | 5 | 2026-01-13
+Nuevo objetivo | 6 | 2026-02-05

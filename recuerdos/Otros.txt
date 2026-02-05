@@ -1,0 +1,27 @@
+Corte de luz | 6 | 2025-01-13
+Ruido en el barrio | 4 | 2025-01-29
+Lluvia intensa | 3 | 2025-02-15
+Objeto perdido | 5 | 2025-03-01
+Accidente leve | 7 | 2025-03-16
+Fila larga en el banco | 4 | 2025-03-31
+Problema con el bus | 6 | 2025-04-14
+Evento inesperado | 5 | 2025-04-30
+Cierre de calle | 7 | 2025-05-11
+Se fue el internet | 8 | 2025-05-26
+Cambio de señal | 3 | 2025-06-08
+Mascota ajena apareció | 4 | 2025-06-23
+Obra pública | 5 | 2025-07-07
+Ruido nocturno | 6 | 2025-07-22
+Objeto extraño visto | 8 | 2025-08-05
+Problema de agua | 7 | 2025-08-20
+Nuevo comercio | 3 | 2025-09-03
+Accidente de tránsito | 9 | 2025-09-18
+Evento comunitario | 4 | 2025-10-01
+Manifestación | 7 | 2025-10-16
+Sirenas de madrugada | 6 | 2025-10-30
+Apagón | 8 | 2025-11-13
+Ruido extraño | 5 | 2025-11-27
+Fiestas barriales | 4 | 2025-12-12
+Año nuevo ruidoso | 6 | 2026-01-01
+Cambio de clima brusco | 3 | 2026-01-20
+Evento inesperado | 7 | 2026-02-05

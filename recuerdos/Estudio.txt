@@ -1,0 +1,27 @@
+Se anunció un parcial sorpresa | 7 | 2025-01-18
+Cambian el horario del semestre | 5 | 2025-02-10
+Un compañero pasó todo | 6 | 2025-02-28
+El laboratorio cerró por daños | 4 | 2025-03-12
+Se filtró el banco de preguntas | 9 | 2025-03-29
+Habrá tutorías extra | 3 | 2025-04-06
+El profesor canceló la clase | 2 | 2025-04-22
+Nueva materia obligatoria | 6 | 2025-05-03
+Examen reprogramado | 5 | 2025-05-17
+Se dañaron los proyectores | 4 | 2025-06-01
+Entrega final adelantada | 8 | 2025-06-19
+Cambian el sistema de notas | 7 | 2025-07-04
+Clase virtual inesperada | 3 | 2025-07-20
+Nuevo docente asignado | 5 | 2025-08-02
+Biblioteca sin internet | 4 | 2025-08-18
+Examen práctico anunciado | 6 | 2025-09-01
+Suspendieron evaluaciones | 2 | 2025-09-16
+Laboratorio renovado | 5 | 2025-09-29
+Semana de exámenes finales | 9 | 2025-10-14
+Cambio de aula | 3 | 2025-10-28
+Inscripciones extendidas | 4 | 2025-11-11
+Revisión de notas | 6 | 2025-11-26
+Recuperación extraordinaria | 7 | 2025-12-04
+Entrega de títulos | 5 | 2025-12-15
+Inicio nuevo ciclo | 4 | 2026-01-10
+Charla académica obligatoria | 6 | 2026-02-02
+Clase suspendida por paro | 8 | 2026-02-05
