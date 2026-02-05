@@ -2,23 +2,32 @@ package sistema;
 
 import estructuras.ListaDobleRecuerdos;
 import estructuras.ListaSimple;
-import estructuras.MinHeap; // IMPORTADO
+import estructuras.MinHeap;
 import estructuras.Nodo;
 import model.Recuerdo;
 import estructuras.ArbolABBRecuerdos;
 import java.io.File;
-
 import java.io.*;
 
+// Clase central que gestiona todos los recuerdos del sistema
 public class GestorCentralRecuerdos {
 
+    // Lista doble para navegar recuerdos en pasado y futuro
     private ListaDobleRecuerdos recuerdos;
+
+    // Nodo que apunta al recuerdo actual
     private Nodo<Recuerdo> actual;
+
+    // Lista de modulos observadores
     private ListaSimple<Modulo> modulos;
+
+    // Instancia unica del gestor (patron Singleton)
     private static GestorCentralRecuerdos instancia;
+
+    // Arbol ABB para organizar recuerdos por fecha
     private ArbolABBRecuerdos arbol;
 
-
+    // Constructor privado que inicializa las estructuras
     public GestorCentralRecuerdos() {
         recuerdos = new ListaDobleRecuerdos();
         actual = null;
@@ -27,6 +36,7 @@ public class GestorCentralRecuerdos {
         cargarDesdeArchivos();
     }
 
+    // Metodo para obtener la unica instancia del gestor
     public static GestorCentralRecuerdos getInstancia() {
         if (instancia == null) {
             instancia = new GestorCentralRecuerdos();
@@ -34,10 +44,10 @@ public class GestorCentralRecuerdos {
         return instancia;
     }
 
-
-    // Almacenamiento con Olvido Inteligente Automático
+    // Metodo para agregar un nuevo recuerdo al sistema
     public String agregarRecuerdo(Recuerdo recuerdo) {
-        // Validar formato de fecha
+
+        // Se valida el formato de la fecha
         try {
             recuerdo.getFechaComoDate();
         } catch (Exception e) {
@@ -46,15 +56,13 @@ public class GestorCentralRecuerdos {
 
         String mensaje = "Recuerdo guardado correctamente.";
 
-
-        // Si la categoría ya tiene 30 o más, aplicamos el heap para borrar el de menor importancia
+        // Si hay demasiados recuerdos de la misma categoria
         if (contarPorCategoria(recuerdo.getCategoria()) >= 30) {
 
-            // 1. Creamos un MinHeap para la categoría llena
+            // Se usa un MinHeap para eliminar el menos importante
             MinHeap heapPrioridad = new MinHeap(35);
             Nodo<Recuerdo> aux = recuerdos.getCabeza();
 
-            // 2. Filtramos los recuerdos de esa categoría y los metemos al Heap
             while (aux != null) {
                 if (aux.dato.getCategoria().equalsIgnoreCase(recuerdo.getCategoria())) {
                     heapPrioridad.insertar(aux.dato);
@@ -62,37 +70,43 @@ public class GestorCentralRecuerdos {
                 aux = aux.siguiente;
             }
 
-            // 3. Extraemos el de menor importancia
+            // Se elimina el recuerdo menos importante
             Recuerdo paraEliminar = heapPrioridad.extraerMinimo();
 
-            // 4. Lo borramos de la memoria y del archivo físico
             if (paraEliminar != null) {
                 eliminarRecuerdo(paraEliminar);
-                // Actualizamos el mensaje para avisar al usuario
-                mensaje = "Olvido inteligente: Se eliminó [" + paraEliminar.getDescripcion() + "] por falta de espacio.";
+                mensaje = "Olvido inteligente: Se elimino [" +
+                        paraEliminar.getDescripcion() +
+                        "] por falta de espacio.";
             }
         }
 
-        // Ahora que hay espacio (máximo 29), agregamos el nuevo
+        // Se agrega el recuerdo a la lista principal
         recuerdos.agregarAlFinal(recuerdo);
+
+        // Se guarda en archivo
         guardarEnArchivo(recuerdo);
 
+        // Se inicializa el recuerdo actual
         if (actual == null) {
             actual = recuerdos.getCabeza();
         }
 
+        // Se notifica a los modulos observadores
         notificarModulos();
+
+        // Se inserta en el arbol ABB
         arbol.insertar(recuerdo);
 
-        // Retornamos el reporte de lo sucedido
         return mensaje;
     }
 
+    // Retorna el recuerdo actual
     public Recuerdo getRecuerdoActual() {
         return actual != null ? actual.dato : null;
     }
 
-    //Recorrido
+    // Mueve el puntero al recuerdo anterior
     public void irAlPasado() {
         if (actual != null && actual.anterior != null) {
             actual = actual.anterior;
@@ -100,6 +114,7 @@ public class GestorCentralRecuerdos {
         }
     }
 
+    // Mueve el puntero al recuerdo siguiente
     public void irAlFuturo() {
         if (actual != null && actual.siguiente != null) {
             actual = actual.siguiente;
@@ -107,11 +122,12 @@ public class GestorCentralRecuerdos {
         }
     }
 
-    // Lista
+    // Retorna todos los recuerdos
     public ListaDobleRecuerdos getTodosLosRecuerdos() {
         return recuerdos;
     }
 
+    // Busca recuerdos por categoria
     public ListaDobleRecuerdos buscarPorCategoria(String categoria) {
         ListaDobleRecuerdos resultado = new ListaDobleRecuerdos();
         Nodo<Recuerdo> aux = recuerdos.getCabeza();
@@ -126,33 +142,38 @@ public class GestorCentralRecuerdos {
         return resultado;
     }
 
+    // Cuenta recuerdos por categoria
     private int contarPorCategoria(String categoria) {
         int contador = 0;
         Nodo<Recuerdo> aux = recuerdos.getCabeza();
+
         while (aux != null) {
             if (aux.dato.getCategoria().equalsIgnoreCase(categoria)) {
                 contador++;
             }
             aux = aux.siguiente;
         }
+
         return contador;
     }
 
-    // Sincronizacion
+    // Registra un modulo observador
     public void registrarModulo(Modulo modulo) {
         modulos.agregar(modulo);
     }
 
+    // Notifica a todos los modulos
     private void notificarModulos() {
         Recuerdo recuerdoActual = getRecuerdoActual();
         Nodo<Modulo> aux = modulos.getCabeza();
+
         while (aux != null) {
             aux.dato.actualizar(recuerdoActual);
             aux = aux.siguiente;
         }
     }
 
-    // Archivos
+    // Guarda un recuerdo en archivo segun su categoria
     private void guardarEnArchivo(Recuerdo recuerdo) {
         try {
             File carpeta = new File("recuerdos");
@@ -168,6 +189,7 @@ public class GestorCentralRecuerdos {
         }
     }
 
+    // Carga recuerdos desde los archivos al iniciar el sistema
     private void cargarDesdeArchivos() {
         File carpeta = new File("recuerdos");
         if (!carpeta.exists()) return;
@@ -199,7 +221,7 @@ public class GestorCentralRecuerdos {
         actual = recuerdos.getCabeza();
     }
 
-    // Busqueda
+    // Busca recuerdos por importancia
     public ListaDobleRecuerdos buscarPorImportancia(int importancia) {
         ListaDobleRecuerdos resultado = new ListaDobleRecuerdos();
         Nodo<Recuerdo> aux = recuerdos.getCabeza();
@@ -214,12 +236,14 @@ public class GestorCentralRecuerdos {
         return resultado;
     }
 
+    // Elimina un recuerdo del sistema
     public void eliminarRecuerdo(Recuerdo recuerdo) {
-        // 1. Eliminar de la lista doble en memoria
         Nodo<Recuerdo> aux = recuerdos.getCabeza();
+
         while (aux != null) {
             if (aux.dato.getDescripcion().equals(recuerdo.getDescripcion()) &&
                     aux.dato.getFecha().equals(recuerdo.getFecha())) {
+
                 recuerdos.eliminarNodo(aux);
                 if (actual == aux) actual = recuerdos.getCabeza();
                 break;
@@ -227,17 +251,17 @@ public class GestorCentralRecuerdos {
             aux = aux.siguiente;
         }
 
-        // 2. Actualizar o borrar el archivo físico
         actualizarArchivoCategoria(recuerdo.getCategoria());
         notificarModulos();
     }
 
+    // Actualiza el archivo de una categoria especifica
     private void actualizarArchivoCategoria(String categoria) {
         File carpeta = new File("recuerdos");
         File archivo = new File(carpeta, categoria + ".txt");
         boolean tieneRecuerdos = false;
 
-        try (FileWriter writer = new FileWriter(archivo, false)) { // false para sobrescribir
+        try (FileWriter writer = new FileWriter(archivo, false)) {
             Nodo<Recuerdo> aux = recuerdos.getCabeza();
             while (aux != null) {
                 if (aux.dato.getCategoria().equalsIgnoreCase(categoria)) {
@@ -250,19 +274,22 @@ public class GestorCentralRecuerdos {
             e.printStackTrace();
         }
 
+        // Si ya no hay recuerdos, se elimina el archivo
         if (!tieneRecuerdos && archivo.exists()) {
             archivo.delete();
         }
     }
 
+    // Retorna el arbol ABB de recuerdos
     public ArbolABBRecuerdos getArbol() {
         return arbol;
     }
 
+    // Obtiene las categorias existentes desde los archivos
     public ListaSimple<String> getCategorias() {
         ListaSimple<String> categorias = new ListaSimple<>();
 
-        File carpeta = new File("recuerdos"); // ajusta si tu ruta es distinta
+        File carpeta = new File("recuerdos");
         if (carpeta.exists() && carpeta.isDirectory()) {
             File[] archivos = carpeta.listFiles((dir, name) -> name.endsWith(".txt"));
             if (archivos != null) {
@@ -275,5 +302,4 @@ public class GestorCentralRecuerdos {
 
         return categorias;
     }
-
 }
