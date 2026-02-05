@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Recuerdo {
 
@@ -18,8 +19,10 @@ public class Recuerdo {
     }
 
     public LocalDate getFechaComoDate() {
-        return LocalDate.parse(fecha);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return LocalDate.parse(fecha, formatter); // Lanza excepción si es inválida
     }
+
 
     public String getDescripcion() {
         return descripcion;

@@ -1,16 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controllers.VisualizadorArbol">
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.VisualizadorArbol"
+            stylesheets="@estilos.css">
 
-    <Pane fx:id="panelArbol"
-          prefWidth="800"
-          prefHeight="600"
-          AnchorPane.topAnchor="0"
-          AnchorPane.bottomAnchor="0"
-          AnchorPane.leftAnchor="0"
-          AnchorPane.rightAnchor="0"/>
-</AnchorPane>
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <Button text="← Regresar"
+                    onAction="#volver"
+                    styleClass="boton-secundario"/>
+
+            <Label fx:id="lblCategoria"
+                   text="Categoría"
+                   styleClass="titulo"/>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fx:id="scrollPane"
+                    pannable="true"
+                    fitToWidth="true"
+                    fitToHeight="true">
+
+            <Pane fx:id="panelArbol"
+                  prefWidth="2000"
+                  prefHeight="2000"/>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

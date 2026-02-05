@@ -24,7 +24,7 @@ public class IngresoController {
 
     @FXML private TextArea txtMensaje;
 
-    private GestorCentralRecuerdos gestor = new GestorCentralRecuerdos();
+    private GestorCentralRecuerdos gestor = GestorCentralRecuerdos.getInstancia();
 
     @FXML
     public void initialize() {

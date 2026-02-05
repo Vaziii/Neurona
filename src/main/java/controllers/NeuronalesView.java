@@ -34,7 +34,7 @@ public class NeuronalesView implements Modulo {
     // ================= INICIALIZACIÓN =================
     @FXML
     public void initialize() {
-        gestor = new GestorCentralRecuerdos();
+        gestor = GestorCentralRecuerdos.getInstancia();
         moduloReciente = new ModuloMemoriaReciente();
         gestor.registrarModulo(moduloReciente);
         gestor.registrarModulo(this);

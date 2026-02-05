@@ -5,6 +5,8 @@ import estructuras.ListaSimple;
 import estructuras.MinHeap; // IMPORTADO
 import estructuras.Nodo;
 import model.Recuerdo;
+import estructuras.ArbolABBRecuerdos;
+import java.io.File;
 
 import java.io.*;
 
@@ -13,17 +15,37 @@ public class GestorCentralRecuerdos {
     private ListaDobleRecuerdos recuerdos;
     private Nodo<Recuerdo> actual;
     private ListaSimple<Modulo> modulos;
+    private static GestorCentralRecuerdos instancia;
+    private ArbolABBRecuerdos arbol;
+
 
     public GestorCentralRecuerdos() {
         recuerdos = new ListaDobleRecuerdos();
         actual = null;
         modulos = new ListaSimple<>();
+        arbol = new ArbolABBRecuerdos();
         cargarDesdeArchivos();
     }
 
+    public static GestorCentralRecuerdos getInstancia() {
+        if (instancia == null) {
+            instancia = new GestorCentralRecuerdos();
+        }
+        return instancia;
+    }
+
+
     // Almacenamiento con Olvido Inteligente Automático
     public String agregarRecuerdo(Recuerdo recuerdo) {
+        // Validar formato de fecha
+        try {
+            recuerdo.getFechaComoDate();
+        } catch (Exception e) {
+            return "Error: La fecha debe estar en formato YYYY-MM-DD (ejemplo: 2025-02-04).";
+        }
+
         String mensaje = "Recuerdo guardado correctamente.";
+
 
         // Si la categoría ya tiene 30 o más, aplicamos el heap para borrar el de menor importancia
         if (contarPorCategoria(recuerdo.getCategoria()) >= 30) {
@@ -60,6 +82,7 @@ public class GestorCentralRecuerdos {
         }
 
         notificarModulos();
+        arbol.insertar(recuerdo);
 
         // Retornamos el reporte de lo sucedido
         return mensaje;
@@ -162,7 +185,10 @@ public class GestorCentralRecuerdos {
                         String descripcion = partes[0];
                         int importancia = Integer.parseInt(partes[1]);
                         String fecha = partes[2];
-                        recuerdos.agregarAlFinal(new Recuerdo(descripcion, importancia, fecha, categoria));
+
+                        Recuerdo recuerdo = new Recuerdo(descripcion, importancia, fecha, categoria);
+                        recuerdos.agregarAlFinal(recuerdo);
+                        arbol.insertar(recuerdo);
                     }
                 }
             } catch (IOException e) {
@@ -228,4 +254,26 @@ public class GestorCentralRecuerdos {
             archivo.delete();
         }
     }
+
+    public ArbolABBRecuerdos getArbol() {
+        return arbol;
+    }
+
+    public ListaSimple<String> getCategorias() {
+        ListaSimple<String> categorias = new ListaSimple<>();
+
+        File carpeta = new File("recuerdos"); // ajusta si tu ruta es distinta
+        if (carpeta.exists() && carpeta.isDirectory()) {
+            File[] archivos = carpeta.listFiles((dir, name) -> name.endsWith(".txt"));
+            if (archivos != null) {
+                for (File f : archivos) {
+                    String nombre = f.getName().replace(".txt", "");
+                    categorias.agregar(nombre);
+                }
+            }
+        }
+
+        return categorias;
+    }
+
 }

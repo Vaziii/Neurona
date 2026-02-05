@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15" alignment="CENTER"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controllers.SeleccionCategoriaController"
+      stylesheets="@estilos.css">
+
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
+
+    <Label text="Selecciona una categoría"
+           styleClass="titulo"/>
+
+    <ComboBox fx:id="comboCategorias"
+              prefWidth="260"
+              styleClass="campo"/>
+
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="Visualizar Árbol"
+                styleClass="boton-primario"
+                onAction="#visualizar"/>
+
+        <Button text="Regresar"
+                styleClass="boton-secundario"
+                onAction="#regresar"/>
+    </HBox>
+
+</VBox>

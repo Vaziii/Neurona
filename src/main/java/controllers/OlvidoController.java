@@ -21,7 +21,7 @@ public class OlvidoController {
     @FXML
     public void initialize() {
         // Al crear el gestor, este ya llama internamente a cargarDesdeArchivos()
-        gestor = new GestorCentralRecuerdos();
+        gestor = GestorCentralRecuerdos.getInstancia();
         actualizarVistaYPrioridades();
     }
 

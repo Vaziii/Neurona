@@ -59,7 +59,19 @@ public class MainMenu {
     }
 
     @FXML
-    void VisualizarArb(ActionEvent event) {
-        ClassBase.MenuButton(Paths.VisualizadorView, "Visualizador de Arbol", event);
+    public void VisualizarArb() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/SeleccionCategoria.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Mostrar Arbol por Categorias ");
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 }
